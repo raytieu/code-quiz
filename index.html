@@ -26,21 +26,29 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"><a class="nav-link underline" href="scores.html">High Scores</a></li>
             </ul>
-            <span class="navbar-text">
+            <span class="navbar-text invisible" id="timer">
                 Time Left: <span id="time-left"></span>
             </span>
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-2">
+    <div class="jumbotron jumbotron-2" id="front-page">
         <h1 class="display-4">JavaScript Coding Quiz</h1>
         <p class="lead">This quiz consists of 5 multiple-choice questions about the basics of the JavaScript programming language.  You have 60 seconds to complete the quiz.  <br>  Your score will be based off of how many questions you answer correct and the time remaining when you finish.</p>
         <hr class="my-4">
         <p>Click the button below to start the quiz!</p>
-        <a class="btn btn-primary btn-lg" href="quiz.html" role="button">Take Quiz</a>
+        <a class="btn btn-primary btn-lg text-white" id="quiz-button" role="button">Take Quiz</a>
     </div>
 
-    <script src="assets/script.js"></script>
+    <div class="jumbotron jumbotron-2 invisible" id="questions">
+        <h3 class="questions">Question</h3>
+        <button id="button1">1</button><br>
+        <button id="button2">2</button><br>
+        <button id="button3">3</button><br>
+        <button id="button4">4</button><br>
+    </div>
+
+    <script src="assets/questions.js"></script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

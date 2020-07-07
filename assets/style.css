@@ -10,3 +10,13 @@
 .invisible {
     display: none;
 }
+
+.list-style {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    border: 2px solid black;
+    font-size: 18px;
+    
+}

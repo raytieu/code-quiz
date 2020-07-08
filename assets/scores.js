@@ -55,12 +55,13 @@ function link() {
     window.location = "scores.html";
 }
 
+clearBtn.addEventListener("click", function(event) {
 
+    var pList = document.querySelectorAll(".list-style");
+    event.preventDefault();
 
-// clearBtn.addEventListener("click", function(event) {
-// var pList = document.querySelectorAll(".list-style");
-// event.preventDefault();
-// for (var i = 0; i < pList.length; i++) {
-//     pList[i].remove();
-// }
-// });
+    for (var i = 0; i < pList.length; i++) {
+        pList[i].remove();
+    }
+    
+});

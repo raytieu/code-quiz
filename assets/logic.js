@@ -8,6 +8,9 @@ let timeLeft = document.querySelector("#time-left");
 let finalScore = document.querySelector("#final-score");
 let finishMessage = document.querySelector("#finish-msg");
 let finalCorrect = document.querySelector("#corrects");
+let submitBtn = document.querySelector("#submit");
+
+let highScores = [];
 
 let correctCount = 0;
 let questionNumber = 0;
@@ -21,7 +24,6 @@ function startQuiz() {
     hideFront.setAttribute("style", "display: none;");
     timeCounter.classList.remove("invisible");
     questionPage.classList.remove("invisible");
-
     
     timeLeft.textContent = time;
 
@@ -52,6 +54,7 @@ function askQuestion() {
         choicesBtn.classList.add("go-next");
         choicesBtn.classList.add("btn-style");
         choice.appendChild(choicesBtn);
+        choicesBtn.addEventListener("click", clickQuestion);
         let lineBreak = document.createElement("br");
         choice.appendChild(lineBreak);
         
@@ -92,10 +95,42 @@ function initialsPage() {
     else {
         finalCorrect.style.color = "red";
     }
+
 }
 
-choice.addEventListener("click", function(event) {
-    if (event.target.value === questionSet[questionNumber].answer) {
+// choice.addEventListener("click", function(event) {
+//     if (event.target.value === questionSet[questionNumber].answer) {
+//         score = score + 150;
+//         correctCount ++;
+//     }
+//     questionNumber++;
+
+//     let removeBtn = document.querySelectorAll(".remove-button");
+//     let removeBr = document.querySelectorAll("br")
+
+//     for (var i = 0; i < removeBtn.length; i++) {
+//         removeBtn[i].remove();
+//         removeBr[i].remove();
+//     }
+    
+//     if (questionNumber === 5) {
+//         if (correctCount === 0) {
+//             score = 0;
+//             initialsPage();
+//         }
+//         else {
+//             time = parseInt(time);
+//             score = score + time * 5;
+//             initialsPage();
+//         }
+//     }
+//     else {
+//         askQuestion();
+//     }
+// });
+
+function clickQuestion() {
+    if (this.value === questionSet[questionNumber].answer) {
         score = score + 150;
         correctCount ++;
     }
@@ -123,6 +158,32 @@ choice.addEventListener("click", function(event) {
     else {
         askQuestion();
     }
-    console.log(score);
+}
+
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var userScore = {}
+    if (enterInitials.value === "") {
+        return;
+    }
+
+    var currScore = {
+        userscore: score,
+        initials: enterinitials.value
+    };
+
+    highScores.push(currScore);
+    enterInitials.value = "";
+
+    renderScores();
+    storeScores();
 });
 
+function storeScores () {
+    localStorage.setItem("highscores", JSON.stringify(highScores));
+}
+
+function link() {
+    window.location = "scores.html";
+}

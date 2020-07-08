@@ -27,7 +27,8 @@ initialsForm.addEventListener("submit", function(event) {
 
 clearBtn.addEventListener("click", function(event) {
     var pList = document.querySelectorAll(".list-style");
-    console.log(pList);
     event.preventDefault();
-    pList.remove();
+    for (var i = 0; i < pList.length; i++) {
+        pList[i].remove();
+    }
 });

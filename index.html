@@ -40,15 +40,22 @@
         <a class="btn btn-primary btn-lg text-white" id="quiz-button" role="button">Take Quiz</a>
     </div>
 
-    <div class="jumbotron jumbotron-2 invisible" id="questions">
-        <h3 class="questions">Question</h3>
-        <button class="button" id="button1">1</button><br>
-        <button class="button" id="button2">2</button><br>
-        <button class="button" id="button3">3</button><br>
-        <button class="button" id="button4">4</button><br>
+    <div class="jumbotron jumbotron-2 invisible" id="question-page">
+        <h3 id="questions"></h3>
+        <div id="choices"></div>
     </div>
 
+    <div class="jumbotron jumbotron-2 invisible" id="last-page">
+        <h3 id="finish-msg"></h3><br>
+        <p>Your final score is <span id="final-score"></span> out of 1000.</p>
+        <p>Enter initials: <input type="text" id="initials" max="3"><button id="submit">Submit</button></p>
+    </div>
+      
+    <div id="feedback" class="feedback invisible"></div>
+
     <script src="assets/questions.js"></script>
+    <script src="assets/logic.js"></script>
+    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

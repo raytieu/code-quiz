@@ -20,3 +20,12 @@
     font-size: 18px;
     
 }
+
+button.btn-style {
+    margin: 5px;
+    text-align: left !important;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}

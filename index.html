@@ -34,7 +34,7 @@
 
     <div class="jumbotron jumbotron-2" id="front-page">
         <h1 class="display-4">JavaScript Coding Quiz</h1>
-        <p class="lead">This quiz consists of 5 multiple-choice questions about the basics of the JavaScript programming language.  You have 60 seconds to complete the quiz.  <br>  Your score will be based off of how many questions you answer correct and the time remaining when you finish.</p>
+        <p class="lead">This quiz consists of 5 multiple-choice questions about the basics of the JavaScript programming language.  You have 50 seconds to complete the quiz.  <br>  Your score will be based off of how many questions you answer correctly and the time remaining when you finish.</p>
         <hr class="my-4">
         <p>Click the button below to start the quiz!</p>
         <a class="btn btn-primary btn-lg text-white" id="quiz-button" role="button">Take Quiz</a>
@@ -46,17 +46,16 @@
     </div>
 
     <div class="jumbotron jumbotron-2 invisible" id="last-page">
-        <h3 id="finish-msg"></h3><br>
+        <h2 id="finish-msg"></h2><br>
         <p>Your final score is <span id="final-score"></span> out of 1000.</p>
-        <p>Enter initials: <input type="text" id="initials" max="3"><button id="submit">Submit</button></p>
+        <p>You answered <span id="corrects"></span> questions correctly.</p>
+        <p>Enter initials: <input type="text" id="enter-initials" max="3"><button id="submit" onclick="link();">Submit</button></p>
     </div>
-      
-    <div id="feedback" class="feedback invisible"></div>
 
     <script src="assets/questions.js"></script>
     <script src="assets/logic.js"></script>
+    <script src="assets/scores.js"></script>
     
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

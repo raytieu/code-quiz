@@ -25,7 +25,7 @@ let questionSet = [
 },
 
 {
-    question: "Which of the following is NOT a way to set a variable in JavaScript?", 
+    question: "Which of the following is NOT a way to create a variable in JavaScript?", 
     choices: ["let", "const", "make", "var"], 
     answer: "make"
 }

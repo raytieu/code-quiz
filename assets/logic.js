@@ -7,6 +7,7 @@ let lastPage = document.querySelector("#last-page");
 let timeLeft = document.querySelector("#time-left");
 let finalScore = document.querySelector("#final-score");
 let finishMessage = document.querySelector("#finish-msg");
+let finalCorrect = document.querySelector("#corrects");
 
 let correctCount = 0;
 let questionNumber = 0;
@@ -64,17 +65,33 @@ function initialsPage() {
     questionPage.setAttribute("style", "display: none;");
     lastPage.classList.remove("invisible");
     finalScore.textContent = score;
-    
+    finalCorrect.textContent = correctCount;
+
     if (score >= 900) {
         finishMessage.textContent = "Your Knowledge is Superb!";
+        finishMessage.style.color = "green";
+        finalScore.style.color = "green";
     }
-    else if (score >= 750) {
+    else if (score >= 600) {
         finishMessage.textContent = "Great Job!";
+        finishMessage.style.color = "orange";
+        finalScore.style.color = "orange";
     }
     else {
         finishMessage.textContent = "Try again for a higher score!";
+        finishMessage.style.color = "red";
+        finalScore.style.color = "red";
     }
-    
+
+    if (correctCount === 5) {
+        finalCorrect.style.color = "green";
+    }
+    else if (correctCount >= 3) {
+        finalCorrect.style.color = "orange";
+    }
+    else {
+        finalCorrect.style.color = "red";
+    }
 }
 
 choice.addEventListener("click", function(event) {

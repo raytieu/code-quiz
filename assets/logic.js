@@ -9,6 +9,7 @@ let finalScore = document.querySelector("#final-score");
 let finishMessage = document.querySelector("#finish-msg");
 let finalCorrect = document.querySelector("#corrects");
 let submitBtn = document.querySelector("#submit");
+let enterInitials = document.querySelector("#enter-initials");
 
 let highScores = [];
 
@@ -162,20 +163,22 @@ function clickQuestion() {
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
+    var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
 
-    var userScore = {}
     if (enterInitials.value === "") {
         return;
     }
 
     var currScore = {
         userscore: score,
-        initials: enterinitials.value
+        initials: enterInitials.value
     };
+
 
     highScores.push(currScore);
     enterInitials.value = "";
 
+    
     renderScores();
     storeScores();
 });

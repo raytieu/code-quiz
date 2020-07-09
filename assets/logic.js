@@ -1,3 +1,4 @@
+// HTML DOM Variable Objects
 let quizBtn = document.querySelector("#quiz-button");
 let hideFront = document.querySelector("#front-page");
 let timeCounter = document.querySelector("#timer");
@@ -11,15 +12,19 @@ let finalCorrect = document.querySelector("#corrects");
 let submitBtn = document.querySelector("#submit");
 let enterInitials = document.querySelector("#enter-initials");
 
+// Array to store high scores to and from local storage
 let highScores = [];
 
+// Counter variables
 let correctCount = 0;
 let questionNumber = 0;
 let score = 0;
 let time = 50;
 
+// Event listener to start quiz
 quizBtn.addEventListener("click", startQuiz);
 
+//Function to start quiz: hide first page, start showing questions and choices, start timer
 function startQuiz() {
 
     hideFront.setAttribute("style", "display: none;");
@@ -41,28 +46,62 @@ function startQuiz() {
 
 }
 
+// Populate questions and choices onto HTML page
 function askQuestion() {
 
     let questions = document.querySelector("#questions");
     questions.innerHTML = questionSet[questionNumber].question;
     
+    // Create buttons for the choices associated with each question
     for (var i = 0; i < 4; i++) {
-
         let choicesBtn = document.createElement("button");
         choicesBtn.textContent = questionSet[questionNumber].choices[i];
         choicesBtn.setAttribute("value", questionSet[questionNumber].choices[i]);
         choicesBtn.classList.add("remove-button");
-        choicesBtn.classList.add("go-next");
         choicesBtn.classList.add("btn-style");
         choice.appendChild(choicesBtn);
         choicesBtn.addEventListener("click", clickQuestion);
         let lineBreak = document.createElement("br");
         choice.appendChild(lineBreak);
-        
     }
 
 }
 
+// Function to move to next question after clicking a choice. If no more questions, then calculate counters and move to next page
+function clickQuestion() {
+
+    if (this.value === questionSet[questionNumber].answer) {
+        score = score + 150;
+        correctCount ++;
+    }
+    questionNumber++;
+
+    let removeBtn = document.querySelectorAll(".remove-button");
+    let removeBr = document.querySelectorAll("br")
+
+    for (var i = 0; i < removeBtn.length; i++) {
+        removeBtn[i].remove();
+        removeBr[i].remove();
+    }
+    
+    if (questionNumber === 5) {
+        if (correctCount === 0) {
+            score = 0;
+            initialsPage();
+        }
+        else {
+            time = parseInt(time);
+            score = score + time * 5;
+            initialsPage();
+        }
+    }
+    else {
+        askQuestion();
+    }
+
+}
+
+// Populate last page with results (score, # correct), and allow user to enter initials
 function initialsPage() {
 
     timeCounter.setAttribute("style", "display: none;");
@@ -99,71 +138,12 @@ function initialsPage() {
 
 }
 
-// choice.addEventListener("click", function(event) {
-//     if (event.target.value === questionSet[questionNumber].answer) {
-//         score = score + 150;
-//         correctCount ++;
-//     }
-//     questionNumber++;
-
-//     let removeBtn = document.querySelectorAll(".remove-button");
-//     let removeBr = document.querySelectorAll("br")
-
-//     for (var i = 0; i < removeBtn.length; i++) {
-//         removeBtn[i].remove();
-//         removeBr[i].remove();
-//     }
-    
-//     if (questionNumber === 5) {
-//         if (correctCount === 0) {
-//             score = 0;
-//             initialsPage();
-//         }
-//         else {
-//             time = parseInt(time);
-//             score = score + time * 5;
-//             initialsPage();
-//         }
-//     }
-//     else {
-//         askQuestion();
-//     }
-// });
-
-function clickQuestion() {
-    if (this.value === questionSet[questionNumber].answer) {
-        score = score + 150;
-        correctCount ++;
-    }
-    questionNumber++;
-
-    let removeBtn = document.querySelectorAll(".remove-button");
-    let removeBr = document.querySelectorAll("br")
-
-    for (var i = 0; i < removeBtn.length; i++) {
-        removeBtn[i].remove();
-        removeBr[i].remove();
-    }
-    
-    if (questionNumber === 5) {
-        if (correctCount === 0) {
-            score = 0;
-            initialsPage();
-        }
-        else {
-            time = parseInt(time);
-            score = score + time * 5;
-            initialsPage();
-        }
-    }
-    else {
-        askQuestion();
-    }
-}
-
+// Submit button will enter object {initials, score} into local storage
 submitBtn.addEventListener("click", function(event) {
+
     event.preventDefault();
-    var highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+    highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+    enterInitials.value = enterInitials.value.toUpperCase();
 
     if (enterInitials.value === "") {
         return;
@@ -174,19 +154,19 @@ submitBtn.addEventListener("click", function(event) {
         initials: enterInitials.value
     };
 
-
     highScores.push(currScore);
     enterInitials.value = "";
-
     
-    renderScores();
     storeScores();
+    
 });
 
-function storeScores () {
+// Store object {initials, score} into local storage
+function storeScores() {
     localStorage.setItem("highscores", JSON.stringify(highScores));
 }
 
+// Link for submit button to navigate to scores page
 function link() {
     window.location = "scores.html";
 }

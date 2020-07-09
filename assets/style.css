@@ -1,16 +1,29 @@
+/* For high scores link in navbar */
 .underline {
     text-decoration: underline;
 }
 
+/* Center the jumbotron */
 .jumbotron-2 {
     text-align: center;
     background-color: white;
 }
 
+/* Used for toggling the display in index.html */
 .invisible {
     display: none;
 }
 
+/* For the multiple-choice buttons */
+.btn-style {
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+}
+
+/* For the high scores display */
 .list-style {
     background-color: #007bff;
     color: white;
@@ -18,14 +31,5 @@
     padding: 10px;
     border: 2px solid black;
     font-size: 18px;
-    
 }
 
-button.btn-style {
-    margin: 5px;
-    text-align: left !important;
-    background-color: #007bff;
-    color: white;
-    font-size: 20px;
-    padding: 10px;
-}

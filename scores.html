@@ -12,11 +12,13 @@
     <!-- CSS Link -->
     <link href="assets/style.css" rel="stylesheet" type="text/css">
 
+    <!-- Tab title -->
     <title>JS Code Quiz</title>
 </head>
 
 <body>
     
+    <!-- Navbar with high scores link, timer invisible for high scores page -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="index.html"><h3>JavaScript Quiz</h3></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,17 +34,19 @@
         </div>
     </nav>
 
+    <!-- Display scores from local storage, buttons to clear scores from both page and storage -->
     <div class="jumbotron jumbotron-2">
         <div class="row justify-content-md-center">
             <div class="col-6">
                 <h4>High Scores</h4><br>
-                <div id="scores-list"></div>
-                <button id="clear">Clear Scores</button>
+                <div id="scores-list"></div><br>
+                <button id="clear">Clear Scores</button><br><br>
+                <a href="index.html"><button>Take Quiz Again!</button></a>
             </div>
         </div>
     </div>
 
-    <!-- <script src="assets/logic.js"></script> -->
+    <!-- JavaScript file -->
     <script src="assets/scores.js"></script>
 
     <!-- Optional JavaScript -->

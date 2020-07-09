@@ -145,7 +145,7 @@ submitBtn.addEventListener("click", function(event) {
     highScores = JSON.parse(localStorage.getItem("highscores")) || [];
     enterInitials.value = enterInitials.value.toUpperCase();
 
-    if (enterInitials.value === "") {
+    if (enterInitials.value === null) {
         return;
     }
 
